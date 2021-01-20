@@ -1,15 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  <div id="app">
+    <HelloWorld v-bind:title="message" v-on:result-event="appAction" />
+    <hr>
+    <p>{{ result }}</p>
+  </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+  },
+  data() {
+    return {
+      message: 'HELLO',
+      result: 'no event'
+    }
+  },
+  methods : {
+    appAction(message){
+      this.result = '(*** you send: "' + message + '".***)'
+    }
   }
 }
 </script>
