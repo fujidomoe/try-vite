@@ -1,32 +1,16 @@
 <template>
   <div id="app">
-    <div>
-      <router-link to="{name:'index', params:{name:'TARO'}}" class="btn btn-primary mx-2">
-        Go to Top
-      </router-link>
-      <router-link to="{name:'JSX', params:{name:'HANAKO'}}" class="btn btn-warning">
-        Go to JSX
-      </router-link>
-    </div>
-    <hr>
-    <router-view></router-view>
+    <HelloWorld/>
   </div>
 </template>
 
-
 <script>
+import HelloWorld from './components/HelloWorld.vue'
+
 export default {
   name: 'app',
-  created() {
-    console.log("***** App Created! *****")
+  components: {
+    HelloWorld
   },
-  mounted() {
-    console.log("----- App Mounted! -----")
-  },
-  data() {
-    return {
-      title:'Router'
-    }
-  }
 }
 </script>
