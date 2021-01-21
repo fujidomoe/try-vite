@@ -1,31 +1,25 @@
 <template>
-  <div class="alert alert-info">
-    <h2>{{ title }}</h2>
-    <p>{{ message }}</p>
-    <hr>
-    <div>
-      <input class="form-control" type="text" v-model="input">
-      <button class="btn btn-info mt-2" v-on:click="doAction">Click</button>
-    </div>
+  <div class="alert alert-primary">
+    <h1>{{ title }}</h1>
+    <p class="mt-3 h5">{{ data.msg }}</p>
   </div>
 </template>
 
 <script>
+import { ref, reactive } from 'vue'
+
 export default {
-  name: 'HelloWorld',
   props: {
     title: String,
   },
-  data() {
+  setup(props, context) {
+    const data = reactive({
+      msg: 'This is ref-value!',
+    })
+    // propsにmsgを指定した方がわかりやすいのはもちろんだけど、context.attrs使うこともできるよ的なアレ
+    data.msg = context.attrs['msg'].toUpperCase()
     return {
-      message: 'お名前は?',
-      input: 'no name',
-    }
-  },
-  methods: {
-    doAction() {
-      this.message = 'こんにちは、' + this.input + 'さん！'
-      this.$emit('result-event', this.input)
+      data
     }
   }
 }

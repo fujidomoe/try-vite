@@ -1,29 +1,19 @@
 <template>
   <div id="app">
-    <HelloWorld v-bind:title="message" v-on:result-event="appAction" />
-    <hr>
-    <p>{{ result }}</p>
+    <!-- <HelloJSX title="CompositionAPI" msg="This is Composition API sample2"> -->
+    <HelloWorld title="CompositionAPI" msg="This is Composition API sample">
   </div>
 </template>
 
 <script>
+// import HelloJSX from './components/HelloJSX.jsx'
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
-  },
-  data() {
-    return {
-      message: 'HELLO',
-      result: 'no event'
-    }
-  },
-  methods : {
-    appAction(message){
-      this.result = '(*** you send: "' + message + '".***)'
-    }
+    // HelloJSX,
+    HelloWorld
   }
 }
 </script>
