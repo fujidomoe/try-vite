@@ -1,13 +1,20 @@
+import { ref, reactive } from 'vue'
+
 export default {
   name: 'HelloJSX',
   props: {
-    title: String,
-    msg: String
+    name: String
   },
-  setup(props){
-    return () => <div class="alert alert-primary">
-      <h1>{props.title}</h1>
-      <p>{props.msg}</p>
+  setup(props) {
+    const data = reactive({
+      title: 'Router',
+      msg: 'This is JSX component sample.',
+    })
+    return () => (
+      <div class="alert alert-warning">
+        <h1>{data.title} [{props.name}]</h1>
+        <p>{data.msg}</p>
       </div>
+    )
   }
 }
