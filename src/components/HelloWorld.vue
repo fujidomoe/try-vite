@@ -1,29 +1,34 @@
 <template>
-  <div class="alert alert-primary">
-    <h1>{{ data.title }}</h1>
-    <p class="mt-3 h5">{{ $store.state.message }}</p>
-    <hr>
-    <div class="alert alert-secondary"
-      @click="$store.commit('doit')">
-      <a class="h5" 
-        @click.stop="$store.commit('reset')">
-        clicked: {{ $store.state.counter }}
-      </a>
-    </div>
-  </div>
+  <section class="alert alert-primary">
+    <h1>{{data.title}}</h1>
+    <p>{{data.message}}</p>
+    <textarea v-model="data.mydata" rows="5"
+      class="form-control"></textarea>
+  </section>
 </template>
 
 <script>
-import { ref, reactive } from 'vue'
+import axios from 'axios'
+import { reactive, onMounted } from 'vue'
 
+      
 export default {
   setup(props) {
     const data = reactive({
-      title: 'Vuex',
+      title:'Axios',
+      message:'This is axios sample.',
+      mydata: '',
     })
-    return {
-      data
+    const getData = () => {
+      const url = "/data.txt"
+      axios.get(url).then((result)=> {
+        data.mydata = result.data
+      })
     }
-  }
+    onMounted(()=> {
+      getData()
+    })
+    return { data, getData }
+  },
 }
 </script>
