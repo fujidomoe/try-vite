@@ -4,7 +4,7 @@
     <p class="mt-3 h5">{{ $store.state.message }}</p>
     <hr>
     <div class="alert alert-secondary"
-      @click="$store.dispatch('doit')">
+      @click="$store.commit('doit')">
       <a class="h5" 
         @click.stop="$store.commit('reset')">
         clicked: {{ $store.state.counter }}
